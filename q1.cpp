@@ -1,99 +1,116 @@
 #include <iostream>
 using namespace std;
 
-const int capacity=5;
-
-void push(int *arr,int x,int *top){
-    if(*top==capacity-1){
-        cout<<"stack overflow"<<endl;;
-        return;
-    }
-    (*top)++;
-    arr[*top]=x;
-   
-}
-void pop(int *arr,int *top){
-    if(*top==-1){
-        cout<<"stack is empty"<<endl;
-        return;
-    }
-    (*top)--;
-}
-bool isEmpty(int *top){
-    if(*top==-1) return 1;
-    return 0;
-}
-bool isFull(int *top){
-    if(*top==capacity-1) return 1;
-    return 0;
-}
-void display(int *arr,int *top){
-    if(*top==-1){
-        cout<<"stack is empty";
-        return;
-    }
-    for(int i=*top;i>=0;i--){
-        cout<<arr[i]<<endl;
-    }
-}
-void peek(int *arr,int *top){
-    if(*top==-1){
-        cout<<"stack is empty";
-        return;
-    }
-    cout<<"peek element is "<<arr[*top]<<endl;
-}
-
 int main() {
-    // Write C++ code here
-   // int capacity=5;
-    int choice, value;
-   
-     int top=-1;
-   
-    int arr[5];
-   
-    while(true){
-        cout<<"1 is push\n";
-        cout<<"2 is pop\n";
-        cout<<"3 is isfull\n";
-        cout<<"4 is isempty\n";
-        cout<<"5 is display\n";
-        cout<<"6 is peek\n";
-        //cout<<"3 is isempty\n";
-        cout<<"enter number from menu\n";
-        cin>>choice;
-       
-        switch(choice){
-            case 1:
-            cout<<"enter value ";
-            cin>>value;
-            push(arr,value, &top);
-            break;
-            case 2:
-            pop(arr,&top);
-            break;
-            case 3:
-            isFull(&top);
-            break;
-            case 4:
-            isEmpty(&top);
-            break;
-            case 5:
-            display(arr,&top);
-            break;
+    int arr[100], n = 0; 
+    int choice;
+
+    do {
+        cout << "\n------ MENU ------\n";
+        cout << "1. CREATE\n";
+        cout << "2. DISPLAY\n";
+        cout << "3. INSERT\n";
+        cout << "4. DELETE\n";
+        cout << "5. LINEAR SEARCH\n";
+        cout << "6. EXIT\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: { // CREATE
+                cout << "Enter number of elements: ";
+                cin >> n;
+                cout << "Enter " << n << " elements: ";
+                for (int i = 0; i < n; i++)
+                    cin >> arr[i];
+                break;
+            }
+
+            case 2: { // DISPLAY
+                if (n == 0) {
+                    cout << "Array is empty!\n";
+                } else {
+                    cout << "Array elements: ";
+                    for (int i = 0; i < n; i++)
+                        cout << arr[i] << " ";
+                    cout << endl;
+                }
+                break;
+            }
+
+            case 3: { // INSERT
+                if (n >= 100) {
+                    cout << "Array is full!\n";
+                } else {
+                    int pos, val;
+                    cout << "Enter position (1 to " << n + 1 << "): ";
+                    cin >> pos;
+                    if (pos < 1 || pos > n + 1) {
+                        cout << "Invalid position!\n";
+                    } else {
+                        cout << "Enter value: ";
+                        cin >> val;
+                        for (int i = n; i >= pos; i--) {
+                            arr[i] = arr[i - 1];
+                        }
+                        arr[pos - 1] = val;
+                        n++;
+                    }
+                }
+                break;
+            }
+
+            case 4: { // DELETE
+                if (n == 0) {
+                    cout << "Array is empty!\n";
+                } else {
+                    int pos;
+                    cout << "Enter position (1 to " << n << "): ";
+                    cin >> pos;
+                    if (pos < 1 || pos > n) {
+                        cout << "Invalid position!\n";
+                    } else {
+                        for (int i = pos - 1; i < n - 1; i++) {
+                            arr[i] = arr[i + 1];
+                        }
+                        n--;
+                        cout << "Element deleted.\n";
+                    }
+                }
+                break;
+            }
+
+            case 5: { // LINEAR SEARCH
+                if (n == 0) {
+                    cout << "Array is empty!\n";
+                } else {
+                    int key, found = -1;
+                    cout << "Enter element to search: ";
+                    cin >> key;
+                    for (int i = 0; i < n; i++) {
+                        if (arr[i] == key) {
+                            found = i;
+                            break;
+                        }
+                    }
+                    if (found != -1) {
+                        cout << "Element found at position " << found + 1 << endl;
+                    } else {
+                        cout << "Element not found.\n";
+                    }
+                }
+                break;
+            }
+
             case 6:
-            peek(arr,&top);
-            break;
-           
-            defaut:
-            cout<<"invalid";
-           
-           
+                cout << "Exiting program...\n";
+                break;
+
+            default:
+                cout << "Invalid choice! Please try again.\n";
         }
-    }
-   
-   
-   
+
+    } while (choice != 6);
+
     return 0;
 }

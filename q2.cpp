@@ -1,22 +1,39 @@
 #include <iostream>
+#include <vector>
 using namespace std;
-void bubbleSort(int arr[], int size){
-    for (int i=0;i<size;i++) {
-        for (int j=0;j<size-i-1;j++){
-            if(arr[j]>arr[j+1]){
-                int temp=arr[j];
-                arr[j]=arr[j+1];
-                arr[j+1]=temp;
-            }
-        }
 
-    }
-}
-int main() {
-    int arr[7]={64,34,25,12,22,11,90};
-    bubbleSort(arr,7);
-    for(int i=0;i<7;i++){
-        cout<<arr[i]<<" ";
-    }
-    return 0;
-}
+int main(){
+	int arr[10]={3,3,3,2,1,6,7,5,5,9};
+	
+	int size=10;
+	
+	for(int i=0;i<10;i++){
+		for(int j=i+1;j<10;j++){
+			if(arr[i]>arr[j]){
+				int temp=arr[i];
+				arr[i]=arr[j];
+				arr[j]=temp;
+			}
+		}
+	}
+	
+	
+	for(int i=0;i<size;i++){
+		for(int j=i+1;j<size;j++){
+			if(arr[i]==arr[j]){
+				for(int k=i;k<size;k++){
+						arr[k]=arr[k+1];
+				}
+				
+				
+				j--;
+				size--;
+			}
+		}
+	}
+	
+	
+	for(int i=0;i<size;i++){
+		cout<< endl<< arr[i] << " ";
+	}
+	

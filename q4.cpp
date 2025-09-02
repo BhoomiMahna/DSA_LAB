@@ -1,122 +1,71 @@
 #include <iostream>
 using namespace std;
-/*
 
-A PART
-int main(){
-char   s2[50]="hey";
-char s1[50]="hello";
-int i=0;
-while(s2[i]!='\0'){
-i++;
+int arr[5]={3,4,2,1,6};
+	int brr[5];
+	int i=0;
+	
+	while(i!=5){
+		for(int j=4;j>=0;j--){
+			brr[j]=arr[i];
+			i++;
+		}
+		
+	}
+	
+	for(int i=0;i<5;i++){
+		cout<< brr[i]<< endl;
+
+	}
+    
+    
+    
+    /* Q4 B PART
+
+int arr[3][3]= {1,2,3,4,5,6,7,8,9};
+	int brr[3][3]={1,2,3,4,5,6,7,8,9};
+	
+	
+	int crr[3][3]={0};
+	
+	for(int k=0;k<3;k++){
+		for(int i=0;i<3;i++){
+		crr[k][i]=0;
+			for(int j=0;j<3;j++){
+				crr[k][i]+=arr[k][j]*brr[j][i];
+			}
+		}
+	}
+
+	
+	for(int k=0;k<3;k++){
+		for(int i=0;i<3;i++){
+			cout<< crr[k][i] << " "<< endl;
+		}
 }
+        */
 
-int j=0;
-while(s1[j]!='\0'){
-s2[i]=s1[j];
-i++;
-j++;
+
+
+
+
+/* Q4 C PART
+int arr[3][3]={{1,2,3},{4,5,6},{7,8,9}};
+
+
+for(int i=0;i<3;i++){
+	for(int j=0;j<3;j++){
+		if(i<j){
+			int temp =arr[i][j];
+			arr[i][j]=arr[j][i];
+			arr[j][i]= temp;
+		}
+	}
 }
-s2[i]='\0';
-
-cout<<s2<<endl;
-return 0;
-}
-
-
-B PART
-int main(){
-char s1[50]="helloo";
-int i=0;
-
-while(s1[i]!='\0'){
-i++;
-}
-int len=i-1;
-int j=0;
-while(j<=i/2){
-char temp=s1[j];
-s1[j]=s1[len];
-s1[len]=temp;
-
-j++;
-len--;
-}
-cout<<s1;
-}
-
-C PART
-int main(){
-    char s[]="helloo";
-    int j=0;
-    while(s[j]!='\0'){
-        j++;
-    }
-   
-    int i=0;
-    while(s[i]!='\0'){
-        if(s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u'){
-            for(int k=i;k<j;k++){
-                 s[k]=s[k+1];
-            }
-           
-            j--;
-           
-        }
-        else i++;
-    }
-    cout<<s;
-}
-
-
-
-
+for(int i=0;i<3;i++){
+	for(int j=0;j<3;j++){
+	  cout<< arr[i][j] << endl;
+}}
 */
-/*
 
-
-D PART
-int main(){
-    char s[]="hello";
-    char s1[50]="";
-    int arr[50]={};
-    int i=0;
-    while(s[i]!='\0'){
-        arr[i]=s[i];
-        i++;
-    }
-    for(int j=0;j<i-1;j++){
-        for(int k=0;k<i-j-1;k++){
-            if(arr[k]>arr[k+1]){
-                int temp=arr[k];
-                arr[k]=arr[k+1];
-                arr[k+1]=temp;
-            }
-        }
-    }
-    for(int l=0;l<i;l++){
-        s1[l]=(char)arr[l];
-    }
-    s1[i]='\0';
-    cout<<s1;
-   
-}*/
-
-// E PART
-int main(){
-    char s[]="hello";
-    char s1[50]="";
-    int arr[50]={};
-   
-    int i=0;
-    while(s[i]!='\0'){
-        arr[i]=s[i]-32;
-        i++;
-    }
-    for(int l=0;l<i;l++){
-        s1[l]=(char)arr[l];
-    }
-    s1[i]='\0';
-    cout<<s1;
-   
 }
