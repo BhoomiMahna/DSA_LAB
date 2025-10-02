@@ -2,26 +2,25 @@
 #include <queue>
 #include <stack>
 using namespace std;
-
 bool canBeSorted(queue<int> inputQueue) {
-    stack<int> s;
-    int x = 1;
-    int n = inputQueue.size();
-
-    while (!inputQueue.empty()) {
-        int front = inputQueue.front();
+    stack<int>s;
+    int x=1;
+    int n=inputQueue.size();
+    while(!inputQueue.empty()) {
+        int front=inputQueue.front();
         inputQueue.pop();
-        if (front ==x) {
+        if(front==x) {
             x++;
-        } else {
-            while (!s.empty() && s.top() ==x) {
+        } 
+        else{
+            while(!s.empty()&&s.top()==x){
                 s.pop();
                 x++;
             }
             s.push(front);
         }
     }
-    while (!s.empty() && s.top() ==x) {
+    while(!s.empty()&&s.top()==x){
         s.pop();
         x++;
     }
@@ -35,11 +34,9 @@ int main() {
     q.push(2);
     q.push(3);
     q.push(4);
-
-    if (canBeSorted(q))
-        cout << "Yes" << endl;
+    if(canBeSorted(q))
+        cout<<"Yes"<<endl;
     else
-        cout << "No" << endl;
-
+        cout<<"No"<<endl;
     return 0;
 }
