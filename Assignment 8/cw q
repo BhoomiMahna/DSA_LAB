@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void leftchild(int index, int n, int val, vector<int>& ans) {
+    if (val == -1) return;
+    int left = 2 * index + 1;
+    if (left < n)
+        ans[left] = val;
+}
+
+void rightchild(int index, int n, int val, vector<int>& ans) {
+    if (val == -1) return;
+    int right = 2 * index + 2;
+    if (right < n)
+        ans[right] = val;
+}
+
+int main() {
+    int n;
+    cout << "Enter total number of nodes ";
+    cin >> n;
+
+    vector<int> ans(n, -1);
+
+    cout << "Enter root node value ";
+    cin >> ans[0];
+
+    for (int i = 0; i < n; i++) {
+        if (ans[i] == -1) continue; 
+        int val;
+        cout << "Enter left child of ";
+        cin >> val;
+        leftchild(i, n, val, ans);
+
+        cout << "Enter right child of ";
+        cin >> val;
+        rightchild(i, n, val, ans);
+    }
+
+    cout << "Array representation";
+    for (int i = 0; i < n; i++) {
+        cout << "Index " << i << ": " << ans[i] << endl;
+    }
+
+    return 0;
+}
